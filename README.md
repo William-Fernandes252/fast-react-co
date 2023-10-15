@@ -10,7 +10,8 @@ This is one of the projects that I developed during my enrollment in the Jonas S
 
 - React foundations like functional components, props, JSX etc.
 - Design principles of React components, like the separation of concerns between component logic, styling and UI, and the React aproach of abstracting those elements in a components tree;
-- Using Vite as a bundler for web apps.
+- Using Vite as a bundler for web apps;
+- Basics of React components unit testing with Vitest.
 
 ## Dependencies
 
