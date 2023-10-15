@@ -159,6 +159,12 @@ body {
   font-size: 1.4rem;
 }
 
+.footer > p {
+  text-align: center;
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+
 .order {
   display: flex;
   flex-direction: column;
