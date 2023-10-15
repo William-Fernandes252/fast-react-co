@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import tsconfigPaths from 'vite-tsconfig-paths';
 import * as path from 'path';
 import react from '@vitejs/plugin-react-swc';
 
@@ -16,7 +17,6 @@ export default defineConfig(async () => {
       if (userLocaleGetResponse.ok) {
         const userLocale = await userLocaleGetResponse.json();
         currencyCode = userLocale['currency']['code'];
-        console.log(currencyCode);
       }
     }
   } catch (error) {
@@ -24,16 +24,15 @@ export default defineConfig(async () => {
   }
 
   return {
-    plugins: [react()],
-    resolve: {
-      alias: [
-        { find: '@', replacement: path.resolve(__dirname, 'src') },
-        { find: '#', replacement: path.resolve(__dirname, '.') },
-      ],
-    },
+    plugins: [react(), tsconfigPaths()],
     define: {
       DEFAULT_LOCALE: JSON.stringify(locale),
       DEFAULT_CURRENCY_CODE: JSON.stringify(currencyCode),
+    },
+    test: {
+      includeSource: ['src/**/*.{js,ts}'],
+      globals: true,
+      environment: 'jsdom',
     },
   };
 });
